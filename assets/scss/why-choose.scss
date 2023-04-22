@@ -72,8 +72,9 @@
                     background-image: linear-gradient(to right, #cfdaff, #afc1f7);
                     text-align: center;
                     padding: 1rem;
-                    max-width: 250px;
-                    width: 100%;
+                    min-width: 250px;
+                    width: 250px;
+                    max-width: 100%;
                     color: $blue_color;
                     border-radius: 55px;
                     display: flex;
@@ -84,14 +85,15 @@
                     font-weight: 600;
                 }
                 .item-text{
-                    flex-grow: 1;
                     color: $white_color;
                     border-radius: 55px;
                     padding: 16px 30px;
                     font-family: 'EJ Rounded';
                     font-weight: 300;
-                    font-size: 14px;
-                    flex: 1;
+                    font-size: 15px;
+                    @media screen and (max-width:992px) {
+                        border-radius: 16px;
+                    }
                 }
 
                 &.item1{

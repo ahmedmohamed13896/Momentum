@@ -5,4 +5,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    min-height: 100vh;
+    z-index: 999999999;
 }

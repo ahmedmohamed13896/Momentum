@@ -1,6 +1,13 @@
 /** scrollToSection */
 function scrollToSection(e,id) {
     e.preventDefault();
+    AOS.init({
+        easing: 'ease-in-out-sine',
+        once: false,
+        mirror: true,
+    });
+
+    
     $([document.documentElement, document.body]).animate({
         scrollTop: $(id).offset().top
     }, {easing:'linear'});
@@ -24,8 +31,8 @@ function setActiveLink(e,id){
         services[i].classList.remove('active');
     });
 
-    // e.target.classList.add('active');
-    // activeService.classList.add('active');
+    e.target.classList.add('active');
+    activeService.classList.add('active');
 }
 
 const frameCount = 21;
@@ -51,7 +58,6 @@ AOS.init({
 $(document).ready(function() {    
     /*** Show Main Page and Hide Loader*/
     $('#page_loader').hide();
-    $('#main_page').show();
     
     /*** Prevent All links from updating URL */
     $('a[href]').each(link =>{
@@ -62,7 +68,6 @@ $(document).ready(function() {
     
     const html = document.documentElement;
     const canvas = document.getElementById("hero-lightpass");
-    const main = document.getElementById('main_page');
     const home = document.getElementById('home_page');
     const ourServices = document.getElementById('our_services');
     const context = canvas.getContext("2d");
@@ -85,15 +90,13 @@ $(document).ready(function() {
     }
 
     /** Set margin of ourServices page*/
-    ourServices.style.marginTop = (home.getBoundingClientRect().height * frameCount) + 'px';
-
-
-
+    ourServices.style.marginTop = (home.getBoundingClientRect().height * 3) + 'px';
+    
     window.addEventListener('scroll', () => {  
         const scrollTop = html.scrollTop;
-        const maxScrollTop = home.getBoundingClientRect().height * frameCount;
+        const maxScrollTop = home.getBoundingClientRect().height * 3;
         const scrollFraction = scrollTop / maxScrollTop;
-        console.log('html.scrollHeight',html.scrollHeight);
+        console.log('scrollFraction',scrollFraction);
         console.log('html.scrollHeight',window.innerHeight);
         
         const frameIndex = Math.min(
@@ -107,6 +110,3 @@ $(document).ready(function() {
     });
 
 });
-
-
-// let scrollPosition = $(document).scrollTop();

@@ -1,0 +1,187 @@
+@import './variables';
+.section{
+    &.contact_us{
+        position: sticky;
+        min-height: auto;
+        z-index: 99;
+        background-color: $primary_color;
+        background-image: url(../images/conatct-us/contact-bg-80.jpg);
+        background-position: top;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+
+    .contact-container{
+        position: relative;
+        
+        .home-icon{
+            position: absolute;
+            right: 10%;
+            top: 1rem;
+            width: 35px;
+            height: 35px;
+            display: block;
+            z-index: 99;
+        }
+
+        .circle{
+            position: relative;
+            height: fit-content;
+            margin: auto;
+            width: 90%;
+            transform: translateY(-10%);
+            
+            
+
+            @media screen and (min-width: 992px) {
+                width: 70%;
+            }
+            .content{
+                min-height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                padding-top: 10%;
+                color: $white_color;
+
+                .info{
+                    padding-right: 10%;
+                }
+                .conatct-icon{
+                    max-width: 200px;
+                    width: 90%;
+                    margin-top: 10%;
+                }
+                .contact-title{
+                    max-width: 100%;
+                    width: 30px;
+                    margin: auto;
+                    img{
+                        width: 100%;
+                    }
+                    h2{
+                        display: none;
+                        color: $blue_color;
+                        font-size: 50px;
+                        line-height: .9;
+                        font-family: 'EJ Rounded Demi';
+                        font-weight: 600;
+                    }
+                }
+                h3{
+                    font-family: 'EJ Rounded Demi';
+                    font-weight: 600;
+                    font-size: 20px;
+                }
+                p{
+                    font-family: 'EJ Rounded';  
+                    font-weight: 300;
+                    font-size: 14px;
+                }
+
+                @media screen and (max-width:992px) {
+                    .conatct-icon{
+                        display: block;
+                        margin: auto;
+                        margin-top: 2rem;
+                        background: url(../images/conatct-us/orange-circle.svg);
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        border-radius: 50%;
+                        width: 100%;
+                        padding: 3rem;
+                    }
+                    .contact-title{
+                        transform: rotate(90deg);
+                        width: 20px;
+                        margin-bottom: -30px;
+                        margin-top: -30px;
+                    }
+                    .info{
+                        padding: 0 3rem;
+                        max-width: 80%;
+                        margin: auto;
+                        h3{
+                            font-size: 18px;
+                        }
+                        p{
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+
+            @media screen and (max-width: 600px) and (orientation:portrait) {
+                .orange-circle{
+                    display: none;
+                }
+                .content{
+                    position: relative;
+                    .info{
+                        padding: 0 1rem;
+                        max-width: 100%;
+                    }
+                    .contact-title{
+                        transform: rotate(0deg);
+                        width: 200px;
+                        margin: auto;
+                        padding: 1rem;
+                        text-align: center;
+                        img{
+                            display: none;
+                        }
+                        h2{
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // our_client
+
+    .our_client{
+        padding-bottom: 4rem;
+        background-color: $primary_color;
+        background-image: url(../images/our-clients/yellow-bg-80.jpg);
+        background-position: bottom;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+       
+        .our-client-icon{
+            width: 200px;
+            max-width: 90%;
+            margin: auto;
+            @media screen and (min-width: 992px) {
+                margin-top: -10%;
+                margin-left: 0;
+            }
+            img{
+                width: 100%;
+            }
+        }
+        .our-client-title{
+            width: 200px;
+            max-width: 90%;
+            margin: 1rem auto;                
+            @media screen and (min-width: 992px) {
+                margin-left: auto;
+            }
+            img{
+                width: 100%;
+            }
+        }
+
+        .logos{
+            background-color: $white_color;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding: 2rem;
+        }
+    }
+}
