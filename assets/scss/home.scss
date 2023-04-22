@@ -1,0 +1,111 @@
+@import './variables';
+.section{
+    &.home_section{
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-image: url(../images/red-bg1.jpg);
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 9999;
+    
+        &[data-aos="aos-top-100vh"] {     
+            &.aos-animate {
+                top: 0;
+                transform: translateY(-100vh);
+            }                  
+        }
+
+        
+
+        .info{
+            text-align: center;
+            color: $white_color;
+            padding: 1rem;
+            font-size: 1rem;
+            margin: auto;
+
+            b{
+                font-family: 'EJ Rounded Demi';
+                font-weight: 600;
+            }
+        }
+
+        .info1{
+            max-width: 400px;
+            opacity: 1;
+            transform: scale(1);
+            overflow: hidden;
+            &[data-aos="zoom-out"] {     
+                &.aos-animate {
+                    opacity: 1;
+                    width: 0;
+                    height: 0;
+                    transform: scale(0);
+                    margin: 0 !important;
+                }                  
+            }
+        }
+
+        .info2{
+            max-width: 550px;
+            opacity: 1;
+            transform: scale(1);
+            overflow: hidden;
+            transition: all .3s ease-in-out;
+            &[data-aos="zoom-out"] {     
+                &.aos-animate {
+                    opacity: 0;
+                    transform: scale(0);
+                    margin: 0 !important;
+                }                  
+            }
+        }
+
+        .logo-container{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url(../images/red-bg-2.jpg);
+            background-position: center;
+            background-size: cover;
+            z-index: 999;
+
+            .logo{
+                width: 60vw;
+                max-width: 500px;
+                height: fit-content;
+
+                .logo-text{
+                    width: 100%;
+                }
+
+                .logo-pandol{
+                    position: absolute;
+                    width: 17%;
+                    left: 14%;
+                    bottom: 32%;
+                }
+            }
+        }
+
+        &[data-aos="aos-scale"] {     
+            &.aos-animate {
+                transform: scale(3) translateX(30%);
+            }                  
+        }
+    }
+}

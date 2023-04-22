@@ -1,0 +1,18 @@
+@keyframes swingCenterRight {
+    from {
+        transform: rotateZ(0);
+    }
+    to {
+        transform: rotateZ(25deg);
+    }
+}
+@keyframes swingRightCenter {
+    from {
+        transform: rotateZ(-25deg);
+    }
+    to {
+        transform: rotateZ(0);
+    }
+}
+
+

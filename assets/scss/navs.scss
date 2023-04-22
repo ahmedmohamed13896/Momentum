@@ -1,0 +1,22 @@
+@import './variables';
+
+.nav-bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    z-index: 99999;
+    ul{
+        li{
+            padding: 5px 25px;
+            border-right: 1px solid $primary_color;
+            border-left: 1px solid $primary_color;
+            a{
+                color: $primary_color;
+                text-decoration: none;
+            }
+        }
+    }
+}

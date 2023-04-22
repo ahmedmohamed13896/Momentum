@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'EJ Rounded Book';
+    src: url('../fonts/EJRounded-Book.eot');
+    src: url('../fonts/EJRounded-Book.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/EJRounded-Book.woff2') format('woff2'),
+        url('../fonts/EJRounded-Book.woff') format('woff'),
+        url('../fonts/EJRounded-Book.ttf') format('truetype'),
+        url('../fonts/EJRounded-Book.svg#EJRounded-Book') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EJ Rounded Demi';
+    src: url('../fonts/EJRounded-Demi.eot');
+    src: url('../fonts/EJRounded-Demi.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/EJRounded-Demi.woff2') format('woff2'),
+        url('../fonts/EJRounded-Demi.woff') format('woff'),
+        url('../fonts/EJRounded-Demi.ttf') format('truetype'),
+        url('../fonts/EJRounded-Demi.svg#EJRounded-Demi') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EJ Rounded';
+    src: url('../fonts/EJRounded-Light.eot');
+    src: url('../fonts/EJRounded-Light.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/EJRounded-Light.woff2') format('woff2'),
+        url('../fonts/EJRounded-Light.woff') format('woff'),
+        url('../fonts/EJRounded-Light.ttf') format('truetype'),
+        url('../fonts/EJRounded-Light.svg#EJRounded-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}

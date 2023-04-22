@@ -1,0 +1,23 @@
+section.home{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-image: url(../images/red-bg1.jpg);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+
+    canvas{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        margin: 0 auto auto auto;
+        max-width: 100vw;
+        max-height: 100vh;
+    }
+}
