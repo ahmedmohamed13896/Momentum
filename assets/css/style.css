@@ -82,6 +82,15 @@ body b {
   font-family: "EJ Rounded Demi";
   font-weight: 600;
 }
+body .home-icon {
+  position: fixed;
+  right: 10%;
+  top: 1rem;
+  width: 35px;
+  height: 35px;
+  display: block;
+  z-index: 99999;
+}
 
 @keyframes swingCenterRight {
   from {
@@ -210,15 +219,6 @@ section.home canvas {
   background-repeat: no-repeat;
   overflow: hidden;
   z-index: 2;
-}
-.section.our_services .service-container .home-icon {
-  position: absolute;
-  right: 10%;
-  top: 1rem;
-  width: 35px;
-  height: 35px;
-  display: block;
-  z-index: 99;
 }
 .section.our_services .service-container::before {
   content: "";
@@ -590,13 +590,6 @@ section.home canvas {
     display: block;
     margin: auto;
     margin-top: 2rem;
-    background: url(../images/conatct-us/orange-circle.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    border-radius: 50%;
-    width: 100%;
-    padding: 3rem;
   }
   .section .contact-container .circle .content .contact-title {
     transform: rotate(90deg);

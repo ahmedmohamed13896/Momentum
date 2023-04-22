@@ -21,16 +21,6 @@
             overflow: hidden;
             z-index: 2;
             
-            .home-icon{
-                position: absolute;
-                right: 10%;
-                top: 1rem;
-                width: 35px;
-                height: 35px;
-                display: block;
-                z-index: 99;
-            }
-
             &::before{
                 content: '';
                 position: absolute;
