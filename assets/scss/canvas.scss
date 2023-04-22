@@ -15,6 +15,39 @@ section.home{
     justify-content: center;
     align-items: flex-start;
 
+    .dots{
+        position: absolute;
+        top: 0;
+        right: 1rem;
+        bottom: 0;
+        margin: auto;
+        // border: 1px solid $primary_color;
+        border-radius: 10px;
+        padding: 10px 5px;
+        list-style: none;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: #80101ba1;
+
+        li{
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: $white_color;
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+            &:hover{
+                transform: scale(1.1);
+                background-color: $primary_color;
+            }
+
+            &.active{
+                background-color: $primary_color;
+            }
+        }
+    }
     canvas{
         max-width: 100%;
         max-height: 100vh;
