@@ -26,6 +26,15 @@
   <!-- Home Page -->
   <section class="home" id="home_page">
     <canvas id="hero-lightpass"></canvas>
+
+    <!-- Dots -->
+    <ul class="dots">
+      <li onClick="scrollDot(1)" class="active"></li>
+      <li onClick="scrollDot(4)"></li>
+      <li onClick="scrollDot(14)"></li>
+      <li onClick="scrollDot(17)"></li>
+      <li onClick="scrollDot(21)"></li>
+    </ul>
     <!-- Nav Bottom -->
     <nav class="nav-bottom">
       <ul class="list-unstyled d-flex justify-content-center align-items-center">
@@ -82,209 +91,217 @@
             </div>
           </div>
         </div>
-        <!-- Service1 -->
-        <div class="service service1 active" id="branding_design">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <div class="service-icon px-3" data-aos="zoom-in" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                  <img class="img-fluid" src="./assets/images/services/service-icon-1.svg" alt="">
+
+        <div class="services container">
+          <!-- Service1 -->
+          <div class="service service1 active" id="branding_design">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <div class="service-icon px-3" data-aos="zoom-in" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                    <img class="img-fluid" src="./assets/images/services/service-icon-1.svg" alt="">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row align-items-center">
-              <div class="col-lg-6">
-                <div class="title" data-aos="zoom-in-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                  Branding <br>and Design
+              <div class="row align-items-center">
+                <div class="col-lg-6">
+                  <div class="title" data-aos="zoom-in-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                    Branding <br>and Design
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-6" data-aos="zoom-in-left" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                <div class="box-title">Our Services</div>
-                <div class="box mx-3">
-                  <div class="text">
-                    We help pharmaceutical companies establish and
-                    enhance their brand identity with visually appealing and
-                    compliant branding and design solutions. From logos to
-                    events design, we create professional and captivating
-                    visuals that convey your brand's values, trustworthiness,
-                    and scientific expertise, while adhering to industry
-                    regulations.
+                <div class="col-lg-6" data-aos="zoom-in-left" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                  <div class="box-title">Our Services</div>
+                  <div class="box mx-3">
+                    <div class="text">
+                      We help pharmaceutical companies establish and
+                      enhance their brand identity with visually appealing and
+                      compliant branding and design solutions. From logos to
+                      events design, we create professional and captivating
+                      visuals that convey your brand's values, trustworthiness,
+                      and scientific expertise, while adhering to industry
+                      regulations.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- Service2 -->
-        <div class="service service2" id="creative_campaigns">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <div class="service-icon px-3" data-aos="zoom-in" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                  <img class="img-fluid" src="./assets/images/services/service-icon-2.svg" alt="">
+          <!-- Service2 -->
+          <div class="service service2" id="creative_campaigns">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <div class="service-icon px-3" data-aos="zoom-in" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                    <img class="img-fluid" src="./assets/images/services/service-icon-2.svg" alt="">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row align-items-center">
-              <div class="col-lg-6">
-                <div class="title" data-aos="zoom-in-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                  Creative <br>Campaigns
+              <div class="row align-items-center">
+                <div class="col-lg-6">
+                  <div class="title" data-aos="zoom-in-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                    Creative <br>Campaigns
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-6" data-aos="zoom-in-left" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                <div class="box-title">Our Services</div>
-                <div class="box mx-3">
-                  <div class="text">
-                    We develop creative and strategic campaigns that are
-                    tailored to the pharmaceutical industry, including product
-                    launches, disease awareness campaigns, and patient
-                    advocacy initiatives. Our campaigns combine compelling
-                    visuals, engaging content, and compliance expertise to
-                    deliver impactful results.
+                <div class="col-lg-6" data-aos="zoom-in-left" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                  <div class="box-title">Our Services</div>
+                  <div class="box mx-3">
+                    <div class="text">
+                      We develop creative and strategic campaigns that are
+                      tailored to the pharmaceutical industry, including product
+                      launches, disease awareness campaigns, and patient
+                      advocacy initiatives. Our campaigns combine compelling
+                      visuals, engaging content, and compliance expertise to
+                      deliver impactful results.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- Service3 -->
-        <div class="service service3" id="event_production">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <div class="service-icon px-3" data-aos="zoom-in" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                  <img class="img-fluid" src="./assets/images/services/service-icon-3.svg" alt="">
+          <!-- Service3 -->
+          <div class="service service3" id="event_production">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <div class="service-icon px-3" data-aos="zoom-in" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                    <img class="img-fluid" src="./assets/images/services/service-icon-3.svg" alt="">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row align-items-center">
-              <div class="col-lg-6">
-                <div class="title" data-aos="zoom-in-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                  Event <br>
-                  Production and <br>
-                  Management
+              <div class="row align-items-center">
+                <div class="col-lg-6">
+                  <div class="title" data-aos="zoom-in-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                    Event <br>
+                    Production and <br>
+                    Management
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-6" data-aos="zoom-in-left" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                <div class="box-title">Our Services</div>
-                <div class="box mx-3">
-                  <div class="text">
-                    Our skilled team of event producers and managers are
-                    experts at seamlessly executing events of all sizes and
-                    complexities. We ensure that your event runs smoothly
-                    from start to finish, leaving you free to focus on your
-                    guests and objectives.
+                <div class="col-lg-6" data-aos="zoom-in-left" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                  <div class="box-title">Our Services</div>
+                  <div class="box mx-3">
+                    <div class="text">
+                      Our skilled team of event producers and managers are
+                      experts at seamlessly executing events of all sizes and
+                      complexities. We ensure that your event runs smoothly
+                      from start to finish, leaving you free to focus on your
+                      guests and objectives.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- Service4 -->
-        <div class="service service4" id="medical_writing">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <div class="service-icon px-3" data-aos="zoom-in" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                  <img class="img-fluid" src="./assets/images/services/service-icon-4.svg" alt="">
+          <!-- Service4 -->
+          <div class="service service4" id="medical_writing">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <div class="service-icon px-3" data-aos="zoom-in" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                    <img class="img-fluid" src="./assets/images/services/service-icon-4.svg" alt="">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row align-items-center">
-              <div class="col-lg-6">
-                <div class="title" data-aos="zoom-in-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                  Medical Writing <br>
-                  and Content <br>
-                  Creation
+              <div class="row align-items-center">
+                <div class="col-lg-6">
+                  <div class="title" data-aos="zoom-in-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                    Medical Writing <br>
+                    and Content <br>
+                    Creation
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-6" data-aos="zoom-in-left" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                <div class="box-title">Our Services</div>
-                <div class="box mx-3">
-                  <div class="text">
-                    Our team of experienced medical writers and content
-                    creators develop engaging and accurate content tailored
-                    for the pharmaceutical industry. From detail aids to
-                    patient education materials, we create content that is
-                    evidence-based, clear, and concise, while adhering to
-                    regulatory guidelines.
+                <div class="col-lg-6" data-aos="zoom-in-left" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                  <div class="box-title">Our Services</div>
+                  <div class="box mx-3">
+                    <div class="text">
+                      Our team of experienced medical writers and content
+                      creators develop engaging and accurate content tailored
+                      for the pharmaceutical industry. From detail aids to
+                      patient education materials, we create content that is
+                      evidence-based, clear, and concise, while adhering to
+                      regulatory guidelines.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- Service5 -->
-        <div class="service service5" id="website_development">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <div class="service-icon px-3" data-aos="zoom-in" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                  <img class="img-fluid" src="./assets/images/services/service-icon-5.svg" alt="">
+          <!-- Service5 -->
+          <div class="service service5" id="website_development">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <div class="service-icon px-3" data-aos="zoom-in" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                    <img class="img-fluid" src="./assets/images/services/service-icon-5.svg" alt="">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row align-items-center">
-              <div class="col-lg-6">
-                <div class="title" data-aos="zoom-in-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                  Website <br>
-                  Development and <br>
-                  Optimization
+              <div class="row align-items-center">
+                <div class="col-lg-6">
+                  <div class="title" data-aos="zoom-in-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                    Website <br>
+                    Development and <br>
+                    Optimization
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-6" data-aos="zoom-in-left" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                <div class="box-title">Our Services</div>
-                <div class="box mx-3">
-                  <div class="text">
-                    We create visually appealing and user-friendly websites
-                    that are optimized for search engines and designed to
-                    convert visitors into customers. Our website
-                    development services include website design, website
-                    development, and website optimization (such as SEO
-                    and performance optimization). We ensure that your
-                    website reflects your brand identity, communicates your
-                    value proposition clearly, and provides an exceptional
-                    user experience.
+                <div class="col-lg-6" data-aos="zoom-in-left" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                  <div class="box-title">Our Services</div>
+                  <div class="box mx-3">
+                    <div class="text">
+                      We create visually appealing and user-friendly websites
+                      that are optimized for search engines and designed to
+                      convert visitors into customers. Our website
+                      development services include website design, website
+                      development, and website optimization (such as SEO
+                      and performance optimization). We ensure that your
+                      website reflects your brand identity, communicates your
+                      value proposition clearly, and provides an exceptional
+                      user experience.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- Service6 -->
-        <div class="service service6" id="social_media">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <div class="service-icon px-3" data-aos="zoom-in" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                  <img class="img-fluid" src="./assets/images/services/service-icon-6.svg" alt="">
+          <!-- Service6 -->
+          <div class="service service6" id="social_media">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <div class="service-icon px-3" data-aos="zoom-in" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                    <img class="img-fluid" src="./assets/images/services/service-icon-6.svg" alt="">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row align-items-center">
-              <div class="col-lg-6">
-                <div class="title" data-aos="zoom-in-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                  Social Media <br>
-                  Management
+              <div class="row align-items-center">
+                <div class="col-lg-6">
+                  <div class="title" data-aos="zoom-in-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                    Social Media <br>
+                    Management
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-6" data-aos="zoom-in-left" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                <div class="box-title">Our Services</div>
-                <div class="box mx-3">
-                  <div class="text">
-                    Social media has become a powerful tool for businesses
-                    to connect with their customers and build brand loyalty.
-                    Our social media management services include creating
-                    and implementing social media strategies, content
-                    creation and curation, social media advertising, and
-                    community management. We will help you establish a
-                    strong presence on popular social media platforms,
-                    engage with your audience, and drive meaningful
-                    interactions that generate results.
+                <div class="col-lg-6" data-aos="zoom-in-left" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                  <div class="box-title">Our Services</div>
+                  <div class="box mx-3">
+                    <div class="text">
+                      Social media has become a powerful tool for businesses
+                      to connect with their customers and build brand loyalty.
+                      Our social media management services include creating
+                      and implementing social media strategies, content
+                      creation and curation, social media advertising, and
+                      community management. We will help you establish a
+                      strong presence on popular social media platforms,
+                      engage with your audience, and drive meaningful
+                      interactions that generate results.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+
+          <div class="actions">
+            <div class="prev" onclick="gotoPrev()">&lt;</div>
+            <div class="next" onclick="gotoNext()">&gt;</div>
           </div>
         </div>
       </div>
