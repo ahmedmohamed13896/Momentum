@@ -121,6 +121,7 @@ body .home-icon {
   padding: 5px 25px;
   border-right: 1px solid #ECC935;
   border-left: 1px solid #ECC935;
+  background-color: rgba(158, 20, 33, 0.6784313725);
 }
 .nav-bottom ul li a {
   color: #ECC935;
@@ -184,6 +185,7 @@ section.home {
   height: 100vh;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  background-color: #9e1421;
   background-image: url(../images/red-bg1.jpg);
   background-size: cover;
   background-position: center;
@@ -192,6 +194,11 @@ section.home {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+@media screen and (max-width: 1024px) {
+  section.home {
+    align-items: center;
+  }
 }
 section.home .dots {
   position: absolute;
@@ -227,6 +234,12 @@ section.home canvas {
   max-width: 100%;
   max-height: 100vh;
   margin: 0 auto;
+}
+@media screen and (max-width: 600px) and (orientation: portrait) {
+  section.home canvas {
+    max-width: 150vw;
+    max-height: 140vh;
+  }
 }
 
 .section.our_services {
@@ -344,6 +357,12 @@ section.home canvas {
   width: 300px;
   max-width: 90%;
   margin: auto;
+}
+@media screen and (max-width: 600px) and (orientation: portrait) {
+  .section.our_services .service-container .services-list .title {
+    width: 200px;
+    margin-top: 4rem;
+  }
 }
 .section.our_services .service-container .services-list .services-menu {
   max-width: 350px;

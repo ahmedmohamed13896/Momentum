@@ -120,6 +120,11 @@
                     width: 300px;
                     max-width: 90%;
                     margin: auto;
+
+                    @media screen and (max-width:600px) and (orientation:portrait) {
+                        width: 200px;
+                        margin-top: 4rem;
+                    }
                 }
 
                 .services-menu {
