@@ -92,6 +92,17 @@ body .home-icon {
   z-index: 99999;
 }
 
+.video-background {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  display: none;
+}
+
 @keyframes swingCenterRight {
   from {
     transform: rotateZ(0);
@@ -231,7 +242,6 @@ section.home .dots li.active {
   background-color: #ECC935;
 }
 section.home canvas {
-  max-width: 100%;
   max-height: 100vh;
   margin: 0 auto;
 }
