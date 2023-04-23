@@ -1,11 +1,13 @@
 /** Animate Aos */
 function initAOS(){
     AOS.init({
-        easing: 'ease-in-out-sine',
+        easing: 'ease-in-out',
         once: false,
         mirror: true,
     });
 }
+const frameCount = 75;
+
 /** scrollToSection */
 function scrollToSection(e,id) {
     e.preventDefault();
@@ -24,8 +26,8 @@ function scrollToTop(e) {
 /** scrollDots */
 function scrollDot(sequence){
     const home = document.getElementById('home_page');
-    let scrollValue =  ((home.getBoundingClientRect().height * 3) / 21) * (sequence-1) ;
-    $([document.documentElement, document.body]).animate({scrollTop: scrollValue}, {easing:'linear'});
+    let scrollValue =  ((home.getBoundingClientRect().height * 5) / frameCount) * (sequence-1) ;
+    $([document.documentElement, document.body]).animate({scrollTop: scrollValue});
 }
 
 /** GotoNext */
@@ -92,8 +94,7 @@ function setActiveLink(e,id){
     const serviceLinks = document.querySelectorAll('.services-menu li');
     const services = document.querySelectorAll('.services-list .service');
     const activeService = document.querySelector(id);
-    const dots = $('.dots li');
-
+    const dots = $('#home_page .dots li');
     serviceLinks.forEach((link,i)=>{
         link.classList.remove('active');
         services[i].classList.remove('active');
@@ -103,7 +104,6 @@ function setActiveLink(e,id){
     activeService.classList.add('active');
 }
 
-const frameCount = 21;
 const currentFrame = index => (
     `./assets/images/sequence/png/${index}.png`
 )
@@ -146,33 +146,31 @@ $(document).ready(function() {
     canvas.height = 1081;
     img.onload=function(){
       context.drawImage(img, 0, 0);
+    //   home.style.backgroundImage = `url('${currentFrame(1)}')`;
     }
 
     const updateImage = index => {
       img.src = currentFrame(index);
-      context.clearRect(0, 0, canvas.width, canvas.height);
       context.drawImage(img, 0, 0);
+    //   home.style.backgroundImage = `url('${currentFrame(index)}')`
     }
 
     /** Set margin of ourServices page*/
-    ourServices.style.marginTop = (home.getBoundingClientRect().height * 3) + 'px';
+    ourServices.style.marginTop = (home.getBoundingClientRect().height * 5) + 'px';
     
     window.addEventListener('scroll', () => {  
         const scrollTop = html.scrollTop;
-        const maxScrollTop = home.getBoundingClientRect().height * 3;
+        const maxScrollTop = home.getBoundingClientRect().height * 5;
         const scrollFraction = scrollTop / maxScrollTop;
-        if(scrollTop >= (home.getBoundingClientRect().height * 3)){
-            ourServices.style.marginTop = (home.getBoundingClientRect().height * 2) + 'px';
+        if(scrollTop >= (home.getBoundingClientRect().height * 5)){
+            ourServices.style.marginTop = (home.getBoundingClientRect().height * 4) + 'px';
             initAOS();
         }else{
-            ourServices.style.marginTop = (home.getBoundingClientRect().height * 3) + 'px';
+            ourServices.style.marginTop = (home.getBoundingClientRect().height * 5) + 'px';
         }
         
         const frameIndex = Math.min(frameCount - 1,Math.ceil(scrollFraction * frameCount));
-        console.log(frameIndex + 1);
-        console.log('scrollTop',scrollTop);
-        
-        const activeDots = [1,4,14,17,21];
+        const activeDots = [1,14,55,64,69];
         
         if(activeDots.indexOf(frameIndex + 1) !== -1){
             dots.each(function(index) {
@@ -184,7 +182,7 @@ $(document).ready(function() {
         }
 
         
-
+        context.clearRect(0, 0, canvas.width, canvas.height);
         requestAnimationFrame(() => updateImage(frameIndex + 1));
     });
 
