@@ -33,6 +33,11 @@
                 background-color: $blue_color;
                 border-radius: 50%;
                 z-index: 3;
+
+                @media screen and (max-width:600px) and (orientation:portrait) {
+                    width: 90vw;
+                    height: 90vw;
+                }
             }
 
             &::after{
@@ -60,6 +65,11 @@
                 align-items: flex-start;
                 z-index: 4;
 
+                @media screen and (max-width:600px) and (orientation:portrait) {
+                    width: 90vw;
+                    height: 60vw;
+                }
+
                 .links{
                     display: flex;
                     position: absolute;
@@ -69,6 +79,7 @@
                     margin: 0;
                     padding: 0;
                     list-style: none;
+                    
                     .link{
                         position: absolute;
                         width: 19%;
@@ -88,6 +99,11 @@
                     }
                     .link3{
                         left: 66%;
+                    }
+
+                    @media screen and (max-width:600px) and (orientation:portrait) {
+                        top: 53%;
+                        height: 40%;
                     }
                 }
                 img{

@@ -197,7 +197,6 @@ section.home {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-color: #9e1421;
-  background-image: url(../images/red-bg1.jpg);
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -242,14 +241,16 @@ section.home .dots li.active {
   background-color: #ECC935;
 }
 section.home canvas {
-  max-height: 100vh;
+  max-width: 100%;
   margin: 0 auto;
 }
 @media screen and (max-width: 600px) and (orientation: portrait) {
   section.home canvas {
     max-width: 150vw;
-    max-height: 140vh;
   }
+}
+section.home canvas.touch-disbled {
+  touch-action: none;
 }
 
 .section.our_services {
@@ -286,6 +287,12 @@ section.home canvas {
   border-radius: 50%;
   z-index: 3;
 }
+@media screen and (max-width: 600px) and (orientation: portrait) {
+  .section.our_services .service-container::before {
+    width: 90vw;
+    height: 90vw;
+  }
+}
 .section.our_services .service-container::after {
   content: "";
   position: absolute;
@@ -309,6 +316,12 @@ section.home canvas {
   justify-content: center;
   align-items: flex-start;
   z-index: 4;
+}
+@media screen and (max-width: 600px) and (orientation: portrait) {
+  .section.our_services .service-container .service-links {
+    width: 90vw;
+    height: 60vw;
+  }
 }
 .section.our_services .service-container .service-links .links {
   display: flex;
@@ -338,6 +351,12 @@ section.home canvas {
 }
 .section.our_services .service-container .service-links .links .link3 {
   left: 66%;
+}
+@media screen and (max-width: 600px) and (orientation: portrait) {
+  .section.our_services .service-container .service-links .links {
+    top: 53%;
+    height: 40%;
+  }
 }
 .section.our_services .service-container .service-links img {
   max-width: 70%;

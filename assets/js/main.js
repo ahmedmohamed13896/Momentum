@@ -7,7 +7,7 @@ function initAOS(){
     });
 }
 
-const frameCount = 75;
+const frameCount = 80;
 
 /** scrollToSection */
 function scrollToSection(e,id) {
@@ -21,14 +21,15 @@ function scrollToSection(e,id) {
 /** scrollToTop */
 function scrollToTop(e) {
     e.preventDefault();
-    $([document.documentElement, document.body]).animate({scrollTop: 0}, {easing:'linear'});
+    $([document.documentElement, document.body]).animate({scrollTop: 0});
 }
 
 /** scrollDots */
 function scrollDot(sequence){
     const home = document.getElementById('home_page');
-    let scrollValue =  ((home.getBoundingClientRect().height * 4) / frameCount) * (sequence-1) ;
-    $([document.documentElement, document.body]).animate({scrollTop: scrollValue});
+    let scrollValue =  ((home.getBoundingClientRect().height * 7) / frameCount) * (sequence-1) ;
+    // $([document.documentElement, document.body]).animate({scrollTop: scrollValue});
+    window.scroll(0, scrollValue)
 }
 
 /** GotoNext */
@@ -142,8 +143,8 @@ $(document).ready(function() {
 
     const img = new Image()
     img.src = currentFrame(1);
-    canvas.width = 1921;
-    canvas.height = 1081;
+    canvas.width = 1920;
+    canvas.height = 1080;
     img.onload=function(){
       context.drawImage(img, 0, 0);
     }
@@ -154,28 +155,28 @@ $(document).ready(function() {
     }
 
     /** Set margin of ourServices page*/
-    ourServices.style.marginTop = (home.getBoundingClientRect().height * 4) + 'px';
+    ourServices.style.marginTop = (home.getBoundingClientRect().height * 7) + 'px';
     
 
     // Setup isScrolling variable
     let isScrolling;
     let lastScroll = html.scrollTop;
-    let count = 0;
+    let inHome = true;
 
     window.addEventListener('scroll', (e) => {  
 
         const scrollTop = html.scrollTop;
-        const maxScrollTop = home.getBoundingClientRect().height * 4;
+        const maxScrollTop = home.getBoundingClientRect().height * 7;
         const scrollFraction = scrollTop / maxScrollTop;
-        if(scrollTop >= (home.getBoundingClientRect().height * 4)){
-            ourServices.style.marginTop = (home.getBoundingClientRect().height * 3) + 'px';
+        if(scrollTop >= (home.getBoundingClientRect().height * 7)){
+            ourServices.style.marginTop = (home.getBoundingClientRect().height * 6) + 'px';
             initAOS();
         }else{
-            ourServices.style.marginTop = (home.getBoundingClientRect().height * 4) + 'px';
+            ourServices.style.marginTop = (home.getBoundingClientRect().height * 7) + 'px';
         }
         
         const frameIndex = Math.min(frameCount - 1,Math.ceil(scrollFraction * frameCount));
-        const activeDots = [1,9,49,63,69];
+        const activeDots = [1,9,49,63,67];
         
         if(activeDots.indexOf(frameIndex + 1) !== -1){
             dots.each(function(index) {
@@ -186,42 +187,62 @@ $(document).ready(function() {
             });
         }
 
+        console.log(frameIndex+1);
+
+        canvas.classList.add('touch-disbled');
+        home.classList.add('touch-disbled');
         
         // Clear our timeout throughout the scroll
 	    window.clearTimeout( isScrolling );
 
+        
+
         // Set a timeout to run after scrolling ends
     	isScrolling = setTimeout(function() {
-            let i = activeDots.indexOf(frameIndex+1);
-            if(lastScroll > scrollTop){
-                console.log('up');
-                // count--;                     
-                // scrollDot(activeDots[count]);                        
-            }else{
-                if(frameIndex+1 < frameCount){
-                    console.log('down');
-                    // count++;
-                    // scrollDot(activeDots[count]);
+            canvas.classList.remove('touch-disbled');
+            home.classList.add('touch-disbled');
 
-                    // scroll down
-                    // if(frameIndex+1 > 1 && (frameIndex+1) < 9){
-                    //     scrollDot(9);
-                    // }
-                    // else if((frameIndex+1 > 9) && (frameIndex+1) < 14){
-                    //     scrollDot(14);
-                    // }
-                    // else if((frameIndex+1 > 14) && (frameIndex+1 < 49)){
-                    //     scrollDot(49);
-                    // }
-                    // else if((frameIndex+1 > 49) && (frameIndex+1 < 63)){
-                    //     scrollDot(63);
-                    // }else if((frameIndex+1 > 63) && (frameIndex+1 < 69)){
-                    //     scrollDot(69);
-                    // }
-                    // else if((frameIndex+1 > 69) && (frameIndex+1 < frameCount)){
-                    //     console.log('our_services');
-                    //     scrollDot(77);
-                    // }
+            // scroll up
+            if(lastScroll > scrollTop){
+                
+                if((frameIndex+1 == frameCount)){
+                    // check if the view inside home
+                    if(maxScrollTop > scrollTop){
+                        scrollDot(67);
+                    }
+                }else
+                 if((frameIndex+1 < frameCount) && (frameIndex+1 > 67)){
+                    scrollDot(67);
+                }else if((frameIndex+1 < 67) && (frameIndex+1 > 63)){
+                    scrollDot(63);
+                }else if((frameIndex+1 < 63) && (frameIndex+1 > 49)){
+                    scrollDot(49);
+                }else if((frameIndex+1 < 49) && (frameIndex+1 > 9)){
+                    scrollDot(9);
+                }else if((frameIndex+1 < 9) && (frameIndex+1 > 1)){
+                    scrollDot(1);
+                }
+                
+            }else{
+                // scroll down
+                if((frameIndex+1 == frameCount)){
+                    // check if the view inside home
+                    if(maxScrollTop > scrollTop){
+                        scrollDot(frameCount+2);
+                    }
+                }else if(frameIndex+1 > 1 && (frameIndex+1) < 9){
+                    scrollDot(9);
+                }
+                else if((frameIndex+1 > 9) && (frameIndex+1 < 49)){
+                    scrollDot(49);
+                }
+                else if((frameIndex+1 > 49) && (frameIndex+1 < 63)){
+                    scrollDot(63);
+                }else if((frameIndex+1 > 63) && (frameIndex+1 < 67)){
+                    scrollDot(67);
+                }
+                else if((frameIndex+1 > 67) && (frameIndex+1 < frameCount)){
+                    scrollDot(frameCount+2);
                 }
             }
             

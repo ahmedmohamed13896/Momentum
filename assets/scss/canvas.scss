@@ -7,7 +7,7 @@ section.home{
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-color: $red_color;
-    background-image: url(../images/red-bg1.jpg);
+    // background-image: url(../images/red-bg1.jpg);
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -53,12 +53,15 @@ section.home{
         }
     }
     canvas{
-        // max-width: 100%;
-        max-height: 100vh;
+        max-width: 100%;
+        // max-height: 100vh;
         margin: 0 auto;
         @media screen and (max-width:600px) and (orientation:portrait) {
             max-width: 150vw;
-            max-height: 140vh;
+        }
+
+        &.touch-disbled{
+            touch-action: none;
         }
     }
 }
