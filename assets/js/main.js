@@ -289,6 +289,9 @@ $(document).ready(function () {
     }
   });
 
+  $(window).on('touchmove', function() { //touchmove works for iOS, I don't know if Android supports it
+    $(document).trigger('mousewheel wheel');
+  });
 
   /*** Mouse Wheel event */
   $(window).on("wheel", (e) => {
