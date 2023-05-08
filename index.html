@@ -5,8 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
   <link rel="stylesheet" href="./assets/libraries/css/animate.min.css">
   <link rel="stylesheet" href="./assets/libraries/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -25,18 +26,68 @@
 
   <!-- Home Page -->
   <section class="home" id="home_page">
-    <canvas id="hero-lightpass"></canvas>
-    <!-- Video -->
-    <!-- <video src="https://assets.codepen.io/39255/output_960.mp4" playsinline="true" webkit-playsinline="true" preload="auto" muted="muted" class="video-background"></video> -->
 
-    <!-- Dots -->
-    <ul class="dots">
-      <li onclick="scrollDot(1)" class="active"></li>
-      <li onclick="scrollDot(9)"></li>
-      <li onclick="scrollDot(49)"></li>
-      <li onclick="scrollDot(63)"></li>
-      <li onclick="scrollDot(67)"></li>
-    </ul>
+    <!-- Swiper -->
+    <div class="swiper homeSwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <!-- Video 0 -->
+          <video class="stopped_video desktop-video" preload="" poster="" muted="">
+            <source src="./assets/videos/sequence/desktop-1.mp4" type="video/mp4">
+          </video>
+          <video class="stopped_video mobile-video" preload="" poster="" muted="">
+            <source src="./assets/videos/sequence/mobile-1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- Video 1 -->
+        <div class="swiper-slide">
+          <video class="video_1 desktop-video" preload="" poster="./assets/images/red-bg1.jpg" muted="">
+            <source src="./assets/videos/sequence/desktop-1.mp4" type="video/mp4">
+          </video>
+          <video class="video_1 mobile-video" preload="" poster="./assets/images/red-bg1.jpg" muted="">
+            <source src="./assets/videos/sequence/mobile-1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- Video 2 -->
+        <div class="swiper-slide">
+          <video class="video_2 desktop-video" preload="" poster="./assets/images/red-bg1.jpg" muted="">
+            <source src="./assets/videos/sequence/desktop-2.mp4" type="video/mp4">
+          </video>
+          <video class="video_2 mobile-video" preload="" poster="./assets/images/red-bg1.jpg" muted="">
+            <source src="./assets/videos/sequence/mobile-2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- Video 3 -->
+        <div class="swiper-slide">
+          <video class="video_3 desktop-video" preload="" poster="./assets/images/red-bg1.jpg" muted="">
+            <source src="./assets/videos/sequence/desktop-3.mp4" type="video/mp4">
+          </video>
+          <video class="video_3 mobile-video" preload="" poster="./assets/images/red-bg1.jpg" muted="">
+            <source src="./assets/videos/sequence/mobile-3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- Video 4 -->
+        <div class="swiper-slide">
+          <video class="video_4 desktop-video" preload="" poster="./assets/images/red-bg1.jpg" muted="">
+            <source src="./assets/videos/sequence/desktop-4.mp4" type="video/mp4">
+          </video>
+          <video class="video_4 mobile-video" preload="" poster="./assets/images/red-bg1.jpg" muted="">
+            <source src="./assets/videos/sequence/mobile-4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- Video -->
+        <!-- <div class="swiper-slide">
+          <video class="video_5 desktop-video" preload="" poster="./assets/images/red-bg1.jpg" muted="">
+            <source src="./assets/videos/sequence/desktop-5.mp4" type="video/mp4">
+          </video>
+          <video class="video_5 mobile-video" preload="" poster="./assets/images/red-bg1.jpg" muted="">
+            <source src="./assets/videos/sequence/mobile-5.mp4" type="video/mp4">
+          </video>
+        </div> -->
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
     <!-- Nav Bottom -->
     <nav class="nav-bottom">
       <ul class="list-unstyled d-flex justify-content-center align-items-center">
@@ -83,12 +134,12 @@
             </div>
             <div class="col-lg-6 mt-5">
               <ul class="services-menu list-unstyled">
-                <li class="active" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500" data-aos-once="false" data-aos-anchor-placement="top" onclick="setActiveLink(event,'#branding_design'); scrollToSection(event,'#branding_design')">Branding and Design</li>
-                <li data-aos="fade-left" data-aos-duration="500" data-aos-delay="500" data-aos-once="false" data-aos-anchor-placement="top" onclick="setActiveLink(event,'#creative_campaigns'); scrollToSection(event,'#creative_campaigns')">Creative Campaigns</li>
-                <li data-aos="fade-right" data-aos-duration="500" data-aos-delay="500" data-aos-once="false" data-aos-anchor-placement="top" onclick="setActiveLink(event,'#event_production'); scrollToSection(event,'#event_production')">Event Production and Management</li>
-                <li data-aos="fade-left" data-aos-duration="500" data-aos-delay="500" data-aos-once="false" data-aos-anchor-placement="top" onclick="setActiveLink(event,'#medical_writing'); scrollToSection(event,'#medical_writing')">Medical Writing and Content Creation</li>
-                <li data-aos="fade-right" data-aos-duration="500" data-aos-delay="500" data-aos-once="false" data-aos-anchor-placement="top" onclick="setActiveLink(event,'#website_development'); scrollToSection(event,'#website_development')">Website Development and Optimization</li>
-                <li data-aos="fade-left" data-aos-duration="500" data-aos-delay="500" data-aos-once="false" data-aos-anchor-placement="top" onclick="setActiveLink(event,'#social_media'); scrollToSection(event,'#social_media')">Social Media Management</li>
+                <li class="active" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500" data-aos-once="false" data-aos-anchor-placement="top" onclick="setActiveLink(event,'#branding_design',1); scrollToSection(event,'#branding_design')">Branding and Design</li>
+                <li data-aos="fade-left" data-aos-duration="500" data-aos-delay="500" data-aos-once="false" data-aos-anchor-placement="top" onclick="setActiveLink(event,'#creative_campaigns',2); scrollToSection(event,'#creative_campaigns')">Creative Campaigns</li>
+                <li data-aos="fade-right" data-aos-duration="500" data-aos-delay="500" data-aos-once="false" data-aos-anchor-placement="top" onclick="setActiveLink(event,'#event_production',3); scrollToSection(event,'#event_production')">Event Production and Management</li>
+                <li data-aos="fade-left" data-aos-duration="500" data-aos-delay="500" data-aos-once="false" data-aos-anchor-placement="top" onclick="setActiveLink(event,'#medical_writing',4); scrollToSection(event,'#medical_writing')">Medical Writing and Content Creation</li>
+                <li data-aos="fade-right" data-aos-duration="500" data-aos-delay="500" data-aos-once="false" data-aos-anchor-placement="top" onclick="setActiveLink(event,'#website_development',5); scrollToSection(event,'#website_development')">Website Development and Optimization</li>
+                <li data-aos="fade-left" data-aos-duration="500" data-aos-delay="500" data-aos-once="false" data-aos-anchor-placement="top" onclick="setActiveLink(event,'#social_media',6); scrollToSection(event,'#social_media')">Social Media Management</li>
               </ul>
             </div>
           </div>
@@ -302,8 +353,8 @@
           </div>
 
           <div class="actions">
-            <div class="prev" onclick="gotoPrev()">&lt;</div>
-            <div class="next" onclick="gotoNext()">&gt;</div>
+            <div class="prev disabled" id="prev" onclick="gotoPrev()">&lt;</div>
+            <div class="next" id="next" onclick="gotoNext()">&gt;</div>
           </div>
         </div>
       </div>
@@ -400,39 +451,39 @@
     <!-- contact-container -->
     <div class="contact-container">
       <div class="conatiner">
-        </div>
-        <div class="circle">
-          <img class="w-100 orange-circle" src="./assets/images/conatct-us/orange-circle.svg" alt="" data-aos="zoom-in" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="top">
-          <div class="content">
-            <img src="./assets/images/conatct-us/icon1.svg" alt="" class="conatct-icon" data-aos="zoom-in-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-            <div class="row align-items-center">
-              <div class="col-lg-6">
-                <div class="contact-title" data-aos="fade-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                  <img class=img-fluid" src="./assets/images/conatct-us/contact-title.svg" alt="">
-                  <h2>Contact Us</h2>
-                </div>
+      </div>
+      <div class="circle">
+        <img class="w-100 orange-circle" src="./assets/images/conatct-us/orange-circle.svg" alt="" data-aos="zoom-in" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="top">
+        <div class="content">
+          <img src="./assets/images/conatct-us/icon1.svg" alt="" class="conatct-icon" data-aos="zoom-in-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <div class="contact-title" data-aos="fade-right" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                <img class=img-fluid" src="./assets/images/conatct-us/contact-title.svg" alt="">
+                <h2>Contact Us</h2>
               </div>
-              <div class="col-lg-6">
-                <div class="info" data-aos="fade-left" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
-                  <h3>Ready to elevate your
-                    pharmaceutical brand with creative
-                    and compliant solutions?</h3>
-                  <p>
-                    Contact Momentum Creative Agency today to discuss
-                    your creative needs and explore how our expertise can
-                    help you achieve your marketing goals.
-                  </p>
-                  <p>
-                    Let's collaborate to create impactful and compliant
-                    solutions for your business!
-                  </p>
-                </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="info" data-aos="fade-left" data-aos-duration="500" data-aos-once="false" data-aos-anchor-placement="center-bottom">
+                <h3>Ready to elevate your
+                  pharmaceutical brand with creative
+                  and compliant solutions?</h3>
+                <p>
+                  Contact Momentum Creative Agency today to discuss
+                  your creative needs and explore how our expertise can
+                  help you achieve your marketing goals.
+                </p>
+                <p>
+                  Let's collaborate to create impactful and compliant
+                  solutions for your business!
+                </p>
+              </div>
 
-              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
 
     <!-- our_client -->
@@ -457,6 +508,7 @@
     </div>
 
   </section>
+
   <script src="./assets/libraries/js/jquery.min.js"></script>
   <script src="./assets/libraries/js/bootstrap.bundle.min.js"></script>
   <script src="./assets/libraries/js/aos.js"></script>
@@ -464,7 +516,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script> -->
 
   <!-- <script src="./assets/js/scroll.js"></script> -->
-  <script src="./assets/js/main.js"></script>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script async src="./assets/js/main.js"></script>
   <!-- <script src="./assets/js/video.js"></script> -->
 </body>
 
