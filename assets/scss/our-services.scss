@@ -1,7 +1,8 @@
 @import './variables';
+
 .section{
-    &.our_services{        
-        position: sticky;
+    &.our_services{
+        position: relative;
         min-height: auto;
         z-index: 99;
         background-color: $orange_color;
@@ -254,6 +255,10 @@
                     align-items: center;
                     justify-content: center;
                     user-select: none;
+                    &.disabled{
+                        opacity: .5;
+                        pointer-events: none;
+                    }
                 }
                 .next{
                     cursor: pointer;

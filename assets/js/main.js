@@ -1,257 +1,371 @@
+/*** Variables  ***/
+const html = document.documentElement;
+const home = document.getElementById("home_page");
+const ourServices = document.getElementById("our_services");
+const homeHeight = home.getBoundingClientRect().height;
+let slidesLength = 4;
+let swiper = new Swiper(".homeSwiper", {
+  direction: "vertical",
+  speed: 1000,
+  slidesPerView: 1,
+  lazy: true,
+  effect: "fade",
+  spaceBetween: 0,
+  mousewheel: true,
+  snapOnRelease: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    draggable: true,
+  },
+  onInit: function(sw){
+    slidesLength = sw.slides.length;
+  },
+  loop: false,
+  loopPreventsSliding: true,
+});
+
+
+let timeOut = 0;
+let activeLinkNumber = 1;
+
 /** Animate Aos */
-function initAOS(){
-    AOS.init({
-        easing: 'ease-in-out',
-        once: false,
-        mirror: true,
-    });
+function initAOS() {
+  AOS.init({
+    easing: "ease-in-out",
+    once: false,
+    mirror: true,
+  });
 }
 
-const frameCount = 80;
+/** Refresh Aos  */
+function refreshAOS() {
+  AOS.refresh({
+    easing: "ease-in-out",
+    once: false,
+    mirror: true,
+  });
+}
 
 /** scrollToSection */
-function scrollToSection(e,id) {
-    e.preventDefault();
-    
-    $([document.documentElement, document.body]).animate({
-        scrollTop: $(id).offset().top
-    }, {easing:'linear'});
+function scrollToSection(e, id) {
+  e.preventDefault();
+
+  $([document.documentElement, document.body]).animate(
+    {
+      scrollTop: $(id).offset().top + 1,
+    },
+    { easing: "linear" }
+  );
+  $("#home_page").fadeOut(1000);
+  document.documentElement.style.overflow = "overlay";
 }
 
 /** scrollToTop */
 function scrollToTop(e) {
-    e.preventDefault();
-    $([document.documentElement, document.body]).animate({scrollTop: 0});
+  e.preventDefault();
+  $([document.documentElement, document.body]).animate({ scrollTop: 0 });
+  $("#home_page").fadeIn(1000);
+  swiper.slideTo(0, 100)
 }
 
 /** scrollDots */
-function scrollDot(sequence){
-    const home = document.getElementById('home_page');
-    let scrollValue =  ((home.getBoundingClientRect().height * 7) / frameCount) * (sequence-1) ;
-    // $([document.documentElement, document.body]).animate({scrollTop: scrollValue});
-    window.scroll(0, scrollValue)
+function scrollDot(step) {
+  const home = document.getElementById("home_page");
+  let scrollValue =
+    home.getBoundingClientRect().height * (step == 1 ? 0 : step);
+  $([document.documentElement, document.body]).animate({
+    scrollTop: scrollValue,
+  });
 }
 
-/** GotoNext */
-function gotoNext(){
-    const allServices = document.querySelectorAll('.services .service');
-    const allLinks = document.querySelectorAll('.services-menu li');
-    console.log(allServices);
-    
-    for(let i =0; i<allServices.length; i++){
-        if(allServices[i].classList.contains('active') && (i != (allServices.length-1))){
-            // remove active from previous service
-            allServices[i].classList.remove('active');
-            allLinks[i].classList.remove('active');
 
-            allServices[i+1].classList.add('active');
-            allLinks[i+1].classList.add('active');
-            allServices[i+1].querySelectorAll('.aos-animate').forEach(item=>{
-                item.classList.remove('aos-animate');
-                item.classList.remove('aos-animate');
-                setTimeout(() => {
-                    item.classList.add('aos-animate');
-                    item.classList.add('aos-animate'); 
-                }, 0);
-            })
-            break;
-        }else if(i != (allServices.length-1)){
-            allServices[i].classList.remove('active');
-            allLinks[i].classList.remove('active');
-        }
+/** GotoNext */
+function gotoNext() {
+  const allServices = document.querySelectorAll(".services .service");
+  const allLinks = document.querySelectorAll(".services-menu li");
+  document.getElementById("prev").classList.remove("disabled");
+
+  activeLinkNumber++;
+  if(activeLinkNumber >= allServices.length){
+    activeLinkNumber = allServices.length;
+    document.getElementById("next").classList.add("disabled");
+  }
+
+  clearTimeout(timeOut);
+  
+  for (let i = 0; i < allServices.length; i++) {
+    if (
+      allServices[i].classList.contains("active") &&
+      i != allServices.length - 1
+    ) {
+      // remove active from previous service
+      allServices[i].classList.remove("active");
+      allLinks[i].classList.remove("active");
+
+      allServices[i + 1].classList.add("active");
+      allLinks[i + 1].classList.add("active");
+      allServices[i + 1].querySelectorAll(".aos-animate").forEach((item) => {
+        item.classList.remove("aos-animate");
+        item.classList.remove("aos-animate");
+        timeOut = setTimeout(() => {
+          item.classList.add("aos-animate");
+          item.classList.add("aos-animate");
+        }, 0);
+      });
+      AOS.refresh();
+      break;
+    } else if (i != allServices.length - 1) {
+      allServices[i].classList.remove("active");
+      allLinks[i].classList.remove("active");
     }
+  }
 }
 
 /** GotoPrev */
-function gotoPrev(){
-    const allServices = document.querySelectorAll('.services .service');
-    const allLinks = document.querySelectorAll('.services-menu li');
-    for(let i =0; i<allServices.length; i++){
-        if(allServices[i].classList.contains('active') && (i != 0)){
-            // remove active from previous service
-            allServices[i].classList.remove('active');
-            allLinks[i].classList.remove('active');
+function gotoPrev() {
+  const allServices = document.querySelectorAll(".services .service");
+  const allLinks = document.querySelectorAll(".services-menu li");
+  document.getElementById("next").classList.remove("disabled");
+  
+  activeLinkNumber--;
+  if(activeLinkNumber <= 1){
+    activeLinkNumber = 1;
+    document.getElementById("prev").classList.add("disabled");
+  }
 
-            allServices[i-1].classList.add('active');
-            allLinks[i-1].classList.add('active');
-            allServices[i-1].querySelectorAll('.aos-animate').forEach(item=>{
-                item.classList.remove('aos-animate');
-                item.classList.remove('aos-animate');
-                setTimeout(() => {
-                    item.classList.add('aos-animate');
-                    item.classList.add('aos-animate'); 
-                }, 0);
-            })
-            break;
-        }else if(i != 0){
-            allServices[i].classList.remove('active');
-            allLinks[i].classList.remove('active');
-        }
+  clearTimeout(timeOut);
+
+  for (let i = 0; i < allServices.length; i++) {
+    if (allServices[i].classList.contains("active") && i != 0) {
+      // remove active from previous service
+      allServices[i].classList.remove("active");
+      allLinks[i].classList.remove("active");
+
+      allServices[i - 1].classList.add("active");
+      allLinks[i - 1].classList.add("active");
+      allServices[i - 1].querySelectorAll(".aos-animate").forEach((item) => {
+        item.classList.remove("aos-animate");
+        item.classList.remove("aos-animate");
+        timeOut = setTimeout(() => {
+          item.classList.add("aos-animate");
+          item.classList.add("aos-animate");
+        }, 0);
+      });
+      AOS.refresh();
+      break;
+    } else if (i != 0) {
+      allServices[i].classList.remove("active");
+      allLinks[i].classList.remove("active");
     }
+  }
 }
 
 /** set Active link */
-function setActiveLink(e,id){
-    e.preventDefault();
-    const serviceLinks = document.querySelectorAll('.services-menu li');
-    const services = document.querySelectorAll('.services-list .service');
-    const activeService = document.querySelector(id);
-    serviceLinks.forEach((link,i)=>{
-        link.classList.remove('active');
-        services[i].classList.remove('active');
-    });
+function setActiveLink(e, id, number) {
+  activeLinkNumber = number;
+  e.preventDefault();
+  const serviceLinks = document.querySelectorAll(".services-menu li");
+  const services = document.querySelectorAll(".services-list .service");
+  const activeService = document.querySelector(id);
+  serviceLinks.forEach((link, i) => {
+    link.classList.remove("active");
+    services[i].classList.remove("active");
+  });
 
-    e.target.classList.add('active');
-    activeService.classList.add('active');
+  e.target.classList.add("active");
+  activeService.classList.add("active");
+  
+  services[number-1].querySelectorAll(".aos-animate").forEach((item) => {
+    item.classList.remove("aos-animate");
+    item.classList.remove("aos-animate");
+    timeOut = setTimeout(() => {
+      item.classList.add("aos-animate");
+      item.classList.add("aos-animate");
+    }, 2000);
+  });
+
+  AOS.refresh();
+
+  if(activeLinkNumber == serviceLinks.length){
+    document.getElementById("prev").classList.remove("disabled");
+    document.getElementById("next").classList.add("disabled");
+  }
+  else if(activeLinkNumber == 1){
+    document.getElementById("next").classList.remove("disabled");
+    document.getElementById("prev").classList.add("disabled");
+  }else{
+    document.getElementById("next").classList.remove("disabled");
+    document.getElementById("prev").classList.remove("disabled");
+  }
 }
-
-const currentFrame = index => (
-    `./assets/images/sequence/jpg/${index}-80.jpg`
-)
-const preloadImages = () => {
-    for (let i = 1; i < frameCount; i++) {
-      const img = new Image();
-      img.src = currentFrame(i);
-    }
-  };
-
-preloadImages();
 
 initAOS();
 
+$(document).ready(function () {
+  /*** Show Hide Loader*/
+  $("#page_loader").hide();
 
-$(document).ready(function() {    
-    /*** Show Hide Loader*/
-    $('#page_loader').hide();
-    
-    /*** Prevent All links from updating URL */
-    $('a[href]').each(link =>{
-        $(link).click(e => {
-            e.preventDefault();
-        })
+  /*** Prevent All links from updating URL */
+  $("a[href]").each((link) => {
+    $(link).click((e) => {
+      e.preventDefault();
     });
-    
-    const html = document.documentElement;
-    const canvas = document.getElementById("hero-lightpass");
-    const home = document.getElementById('home_page');
-    const ourServices = document.getElementById('our_services');
-    const context = canvas.getContext("2d");
-    const dots = $('#home_page .dots li');
+  });
 
-    
+  document.documentElement.style.overflow = "hidden";
+  // Do something on slide #2 (note that index starts from 0)
+  let swipIsActive = true;
+
+  swiper.on("slideChange", (sw) => {
+    console.log(swiper.realIndex);
+    sw.mousewheel.disable();
+    clearTimeout(timeOut);
+    swipIsActive = false;
+    document.documentElement.style.overflow = "hidden";
+    if (!sw.mousewheel.enabled) {
+      if (swiper.realIndex == 0) {
+        document.querySelector(".stopped_video").currentTime = 0;
+        //mobile
+        document.querySelector(".stopped_video.mobile-video").currentTime = 0;
+        timeOut = setTimeout(() => {
+          sw.mousewheel.enable();
+        }, 500);
+      }
+      if (swiper.realIndex == 1) {
+        document.querySelector(".stopped_video").currentTime = 0;
+        document.querySelector(".video_1").currentTime = 0;
+        document.querySelector(".video_1").play();
+        document.querySelector(".video_1").playbackRate = .7;
+        //mobile
+        document.querySelector(".stopped_video.mobile-video").currentTime = 0;
+        document.querySelector(".video_1.mobile-video").currentTime = 0;
+        document.querySelector(".video_1.mobile-video").play();
+        document.querySelector(".video_1.mobile-video").playbackRate = .7;
+        timeOut = setTimeout(() => {
+          sw.mousewheel.enable();
+        }, 2500);
+      } else if (swiper.realIndex == 2) {
+        document.querySelector(".video_2").currentTime = 0;
+        document.querySelector(".video_2").play();
+        document.querySelector(".video_2").playbackRate = .7;
+        //mobile
+        document.querySelector(".video_2.mobile-video").currentTime = 0;
+        document.querySelector(".video_2.mobile-video").play();
+        document.querySelector(".video_2.mobile-video").playbackRate = .7;
+        timeOut = setTimeout(() => {
+          sw.mousewheel.enable();
+        }, 3500);
+      } else if (swiper.realIndex == 3) {
+        document.querySelector(".video_3").currentTime = 0;
+        document.querySelector(".video_3").play();
+        document.querySelector(".video_3").playbackRate = .7;
+        // mobile
+        document.querySelector(".video_3.mobile-video").currentTime = 0;
+        document.querySelector(".video_3.mobile-video").play();
+        document.querySelector(".video_3.mobile-video").playbackRate = .7;
+        timeOut = setTimeout(() => {
+          sw.mousewheel.enable();
+        }, 4500);
+      } else if (swiper.realIndex == 4) {
+        document.querySelector(".video_4").currentTime = 0;
+        document.querySelector(".video_4").play();
+        // mobile
+        document.querySelector(".video_4.mobile-video").currentTime = 0;
+        document.querySelector(".video_4.mobile-video").play();
+        timeOut = setTimeout(() => {
+          sw.mousewheel.enable();
+          swipIsActive = true;
+        }, 5500);
+      }
+      // else if (swiper.realIndex == 5) {
+      //   document.querySelector('.video_5').currentTime = 0;
+      //   document.querySelector('.video_5').play();
+      //   timeOut = setTimeout(() => {
+      //     sw.mousewheel.enable();
+      //     swipIsActive = true;
+      //   }, 5000);
+      // }
+    }
+  });
 
 
-    const img = new Image()
-    img.src = currentFrame(1);
-    canvas.width = 1920;
-    canvas.height = 1080;
-    img.onload=function(){
-      context.drawImage(img, 0, 0);
+  /*** Mouse Wheel event */
+  $(window).on("wheel", (e) => {
+    let delta = e.originalEvent.deltaY;
+    let serviceTop = ourServices.getBoundingClientRect().top;
+
+    if (delta > 0){
+      // scroll down
+      if(swiper.realIndex == slidesLength && swipIsActive){
+        if (serviceTop <= 0) {
+          document.documentElement.style.overflow = "overlay";
+          $(home).hide();
+          return;
+        } else if (serviceTop > 0) {
+          $(home).show();
+          document.querySelector(`.video_${slidesLength}`).currentTime = 0;
+          document.querySelector(`.video_${slidesLength}`).play();
+          // mobile
+          document.querySelector(`.video_${slidesLength}.mobile-video`).currentTime = 0;
+          document.querySelector(`.video_${slidesLength}.mobile-video`).play();
+          timeOut = setTimeout(() => {
+            swiper.mousewheel.enable();
+            swipIsActive = true;
+          }, 5500);
+          document.documentElement.style.overflow = "hidden";
+          return;
+        }
+      }
+     
+    } 
+    else if(delta <= 0){
+      // scroll up
+      if(serviceTop == 0){
+        $(home).show();
+        if(swipIsActive){
+          // document.querySelector(`.video_${slidesLength}`).currentTime = 0;
+          // document.querySelector(`.video_${slidesLength}`).play();
+          // // mobile
+          // document.querySelector(`.video_${slidesLength}.mobile-video`).currentTime = 0;
+          // document.querySelector(`.video_${slidesLength}.mobile-video`).play();
+          // timeOut = setTimeout(() => {
+          //   // swiper.mousewheel.enable();
+          //   swipIsActive = true;
+          // }, 5500);
+        }
+        document.documentElement.style.overflow = "hidden";
+      }else{
+        document.documentElement.style.overflow = "overlay";
+      }
     }
 
-    const updateImage = index => {
-      img.src = currentFrame(index);
-      context.drawImage(img, 0, 0);
-    }
-
-    /** Set margin of ourServices page*/
-    ourServices.style.marginTop = (home.getBoundingClientRect().height * 7) + 'px';
     
 
-    // Setup isScrolling variable
-    let isScrolling;
-    let lastScroll = html.scrollTop;
-    let inHome = true;
+    
+  });
 
-    window.addEventListener('scroll', (e) => {  
 
-        const scrollTop = html.scrollTop;
-        const maxScrollTop = home.getBoundingClientRect().height * 7;
-        const scrollFraction = scrollTop / maxScrollTop;
-        if(scrollTop >= (home.getBoundingClientRect().height * 7)){
-            ourServices.style.marginTop = (home.getBoundingClientRect().height * 6) + 'px';
-            initAOS();
-        }else{
-            ourServices.style.marginTop = (home.getBoundingClientRect().height * 7) + 'px';
-        }
-        
-        const frameIndex = Math.min(frameCount - 1,Math.ceil(scrollFraction * frameCount));
-        const activeDots = [1,9,49,63,67];
-        
-        if(activeDots.indexOf(frameIndex + 1) !== -1){
-            dots.each(function(index) {
-                $(this).removeClass('active');
-                if(index == activeDots.indexOf(frameIndex + 1)){
-                    $(this).addClass('active');
-                }
-            });
-        }
+  if (ourServices.getBoundingClientRect().top < 0) {
+    document.documentElement.style.overflow = "overlay";
+    $(home).fadeOut();
+    swiper.slideTo(slidesLength, 100)
+  } else {
+    document.documentElement.style.overflow = "hidden";
+    $(home).fadeIn();
+  }
 
-        console.log(frameIndex+1);
 
-        canvas.classList.add('touch-disbled');
-        home.classList.add('touch-disbled');
-        
-        // Clear our timeout throughout the scroll
-	    window.clearTimeout( isScrolling );
-
-        
-
-        // Set a timeout to run after scrolling ends
-    	isScrolling = setTimeout(function() {
-            canvas.classList.remove('touch-disbled');
-            home.classList.add('touch-disbled');
-
-            // scroll up
-            if(lastScroll > scrollTop){
-                
-                if((frameIndex+1 == frameCount)){
-                    // check if the view inside home
-                    if(maxScrollTop > scrollTop){
-                        scrollDot(67);
-                    }
-                }else
-                 if((frameIndex+1 < frameCount) && (frameIndex+1 > 67)){
-                    scrollDot(67);
-                }else if((frameIndex+1 < 67) && (frameIndex+1 > 63)){
-                    scrollDot(63);
-                }else if((frameIndex+1 < 63) && (frameIndex+1 > 49)){
-                    scrollDot(49);
-                }else if((frameIndex+1 < 49) && (frameIndex+1 > 9)){
-                    scrollDot(9);
-                }else if((frameIndex+1 < 9) && (frameIndex+1 > 1)){
-                    scrollDot(1);
-                }
-                
-            }else{
-                // scroll down
-                if((frameIndex+1 == frameCount)){
-                    // check if the view inside home
-                    if(maxScrollTop > scrollTop){
-                        scrollDot(frameCount+2);
-                    }
-                }else if(frameIndex+1 > 1 && (frameIndex+1) < 9){
-                    scrollDot(9);
-                }
-                else if((frameIndex+1 > 9) && (frameIndex+1 < 49)){
-                    scrollDot(49);
-                }
-                else if((frameIndex+1 > 49) && (frameIndex+1 < 63)){
-                    scrollDot(63);
-                }else if((frameIndex+1 > 63) && (frameIndex+1 < 67)){
-                    scrollDot(67);
-                }
-                else if((frameIndex+1 > 67) && (frameIndex+1 < frameCount)){
-                    scrollDot(frameCount+2);
-                }
-            }
-            
-            lastScroll = scrollTop;
-    	}, 66);
-
-        
-        // context.clearRect(0, 0, canvas.width, canvas.height);
-        requestAnimationFrame(() => updateImage(frameIndex + 1));
-    });
-
+  /*** Resize Event */
+  $(window).resize(function(){
+    if (ourServices.getBoundingClientRect().top < 0) {
+      document.documentElement.style.overflow = "overlay";
+      $(home).fadeOut();
+    } else {
+      document.documentElement.style.overflow = "hidden";
+      $(home).fadeIn();
+    }
+  });
+  
 });
+

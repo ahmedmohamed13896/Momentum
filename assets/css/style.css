@@ -92,17 +92,6 @@ body .home-icon {
   z-index: 99999;
 }
 
-.video-background {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  display: none;
-}
-
 @keyframes swingCenterRight {
   from {
     transform: rotateZ(0);
@@ -189,21 +178,43 @@ body .home-icon {
 }
 
 section.home {
-  position: sticky;
+  position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   height: 100vh;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-color: #9e1421;
+  background-image: url(../images/red-bg1.jpg);
   background-size: cover;
   background-position: center;
   overflow: hidden;
-  padding-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  z-index: 100;
+}
+@media screen and (max-width: 768px) and (orientation: portrait) {
+  section.home {
+    background-size: 142%;
+    background-position: bottom;
+    background-image: url(../images/red-mobile.png);
+  }
+  section.home .nav-bottom {
+    max-width: 100%;
+  }
+  section.home .nav-bottom ul {
+    flex-wrap: wrap;
+  }
+  section.home .nav-bottom ul li {
+    padding: 5px 14px;
+    margin: 5px 0;
+    border: 0;
+    background: none;
+  }
+  section.home .nav-bottom ul li a {
+    font-size: 14px;
+  }
 }
 @media screen and (max-width: 1024px) {
   section.home {
@@ -253,8 +264,55 @@ section.home canvas.touch-disbled {
   touch-action: none;
 }
 
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.swiper-slide video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.swiper-slide video.desktop-video {
+  display: block;
+}
+.swiper-slide video.mobile-video {
+  display: none;
+}
+@media screen and (max-width: 768px) and (orientation: portrait) {
+  .swiper-slide video.desktop-video {
+    display: none;
+  }
+  .swiper-slide video.mobile-video {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+}
+
+.swiper-fade .swiper-slide {
+  opacity: 0 !important;
+}
+
+.swiper-fade .swiper-slide-active {
+  opacity: 1 !important;
+}
+
 .section.our_services {
-  position: sticky;
+  position: relative;
   min-height: auto;
   z-index: 99;
   background-color: #ee4130;
@@ -500,6 +558,10 @@ section.home canvas.touch-disbled {
   justify-content: center;
   user-select: none;
 }
+.section.our_services .services .actions div.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
 .section.our_services .services .actions .next {
   cursor: pointer;
 }
@@ -609,14 +671,14 @@ section.home canvas.touch-disbled {
   box-shadow: -6px -2px 13px -1px #93d0ff;
 }
 .section .choose-sections .items .item.item3 .item-text {
-  background-color: #c96ce6;
-  background-image: linear-gradient(to right, #edb7ff, #c96ce6);
-  box-shadow: -6px -2px 13px -1px #edb7ff;
+  background-color: #632dc4;
+  background-image: linear-gradient(to right, #9e7ddc, #632dc4);
+  box-shadow: -6px -2px 13px -1px #9e7ddc;
 }
 .section .choose-sections .items .item.item4 .item-text {
-  background-color: #ff5748;
-  background-image: linear-gradient(to right, #fdaeaa, #ff5748);
-  box-shadow: -6px -2px 13px -1px #fdaeaa;
+  background-color: #1698ed;
+  background-image: linear-gradient(to right, #93d0ff, #1698ed);
+  box-shadow: -6px -2px 13px -1px #93d0ff;
 }
 
 .section.contact_us {
