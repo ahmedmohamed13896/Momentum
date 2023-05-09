@@ -31,15 +31,16 @@ section.home{
 
         .nav-bottom{
             max-width: 100%;
+            bottom: 25px;
             ul{
                 flex-wrap: wrap;
                 li{
-                    padding: 5px 14px;
+                    padding: 5px 11px;
                     margin: 5px 0;
                     border: 0;
                     background: none;
                     a{
-                        font-size: 14px;
+                        font-size: 13px;
                     }
                 }
             }

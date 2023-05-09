@@ -202,18 +202,19 @@ section.home {
   }
   section.home .nav-bottom {
     max-width: 100%;
+    bottom: 25px;
   }
   section.home .nav-bottom ul {
     flex-wrap: wrap;
   }
   section.home .nav-bottom ul li {
-    padding: 5px 14px;
+    padding: 5px 11px;
     margin: 5px 0;
     border: 0;
     background: none;
   }
   section.home .nav-bottom ul li a {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 @media screen and (max-width: 1024px) {
