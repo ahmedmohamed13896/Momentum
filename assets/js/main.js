@@ -23,6 +23,7 @@ let swiper = new Swiper(".homeSwiper", {
   },
   loop: false,
   loopPreventsSliding: true,
+  observer: true,
 });
 
 
@@ -290,65 +291,52 @@ $(document).ready(function () {
   });
 
   $(window).on('touchmove', function() { //touchmove works for iOS, I don't know if Android supports it
-    $(document).trigger('mousewheel wheel');
+    $(window).trigger('mousewheel wheel');
   });
 
+  let delta = 0;
+  let serviceTop = ourServices.getBoundingClientRect().top;
   /*** Mouse Wheel event */
   $(window).on("wheel", (e) => {
-    let delta = e.originalEvent.deltaY;
-    let serviceTop = ourServices.getBoundingClientRect().top;
+    delta = e.originalEvent.deltaY;
+    serviceTop = ourServices.getBoundingClientRect().top;
 
     if (delta > 0){
       // scroll down
-      if(swiper.realIndex == slidesLength && swipIsActive){
-        if (serviceTop <= 0) {
-          document.documentElement.style.overflow = "overlay";
-          $(home).hide();
-          return;
-        } else if (serviceTop > 0) {
-          $(home).show();
-          document.querySelector(`.video_${slidesLength}`).currentTime = 0;
-          document.querySelector(`.video_${slidesLength}`).play();
-          // mobile
-          document.querySelector(`.video_${slidesLength}.mobile-video`).currentTime = 0;
-          document.querySelector(`.video_${slidesLength}.mobile-video`).play();
-          timeOut = setTimeout(() => {
-            swiper.mousewheel.enable();
-            swipIsActive = true;
-          }, 5500);
-          document.documentElement.style.overflow = "hidden";
-          return;
-        }
-      }
-     
+      handleScrollDown(serviceTop);
     } 
     else if(delta <= 0){
       // scroll up
-      if(serviceTop == 0){
-        $(home).show();
-        if(swipIsActive){
-          // document.querySelector(`.video_${slidesLength}`).currentTime = 0;
-          // document.querySelector(`.video_${slidesLength}`).play();
-          // // mobile
-          // document.querySelector(`.video_${slidesLength}.mobile-video`).currentTime = 0;
-          // document.querySelector(`.video_${slidesLength}.mobile-video`).play();
-          // timeOut = setTimeout(() => {
-          //   // swiper.mousewheel.enable();
-          //   swipIsActive = true;
-          // }, 5500);
-        }
-        document.documentElement.style.overflow = "hidden";
-      }else{
-        document.documentElement.style.overflow = "overlay";
-      }
-    }
-
-    
-
-    
+      handleScrollUp(serviceTop);
+    }    
   });
 
 
+  let touchstartY = 0
+  let touchendY = 0
+      
+  function checkDirection() {
+    if (touchendY < touchstartY) {
+      console.log('down');
+      handleScrollDown();
+    }
+    if (touchendY > touchstartY) {
+      console.log('up');
+      handleScrollUp();
+    }
+  }
+
+  document.addEventListener('touchstart', e => {
+    serviceTop = ourServices.getBoundingClientRect().top;
+    touchstartX = e.changedTouches[0].screenX
+  })
+
+  document.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX
+    checkDirection()
+  })
+
+  // detect postion after loan 
   if (ourServices.getBoundingClientRect().top < 0) {
     document.documentElement.style.overflow = "overlay";
     $(home).fadeOut();
@@ -370,5 +358,49 @@ $(document).ready(function () {
     }
   });
   
+  // handle scroll down
+  function handleScrollDown(){
+    if(swiper.realIndex == slidesLength && swipIsActive){
+      if (serviceTop <= 0) {
+        document.documentElement.style.overflow = "overlay";
+        $(home).hide();
+        return;
+      } else if (serviceTop > 0) {
+        $(home).show();
+        document.querySelector(`.video_${slidesLength}`).currentTime = 0;
+        document.querySelector(`.video_${slidesLength}`).play();
+        // mobile
+        document.querySelector(`.video_${slidesLength}.mobile-video`).currentTime = 0;
+        document.querySelector(`.video_${slidesLength}.mobile-video`).play();
+        timeOut = setTimeout(() => {
+          swiper.mousewheel.enable();
+          swipIsActive = true;
+        }, 5500);
+        document.documentElement.style.overflow = "hidden";
+        return;
+      }
+    }
+  }
+
+  // handle scroll Up
+  function handleScrollUp(){
+    if(serviceTop == 0){
+      $(home).show();
+      if(swipIsActive){
+        // document.querySelector(`.video_${slidesLength}`).currentTime = 0;
+        // document.querySelector(`.video_${slidesLength}`).play();
+        // // mobile
+        // document.querySelector(`.video_${slidesLength}.mobile-video`).currentTime = 0;
+        // document.querySelector(`.video_${slidesLength}.mobile-video`).play();
+        // timeOut = setTimeout(() => {
+        //   // swiper.mousewheel.enable();
+        //   swipIsActive = true;
+        // }, 5500);
+      }
+      document.documentElement.style.overflow = "hidden";
+    }else{
+      document.documentElement.style.overflow = "overlay";
+    }
+  }
 });
 
