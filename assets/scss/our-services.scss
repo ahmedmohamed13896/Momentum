@@ -67,7 +67,7 @@
                 z-index: 4;
 
                 @media screen and (max-width:600px) and (orientation:portrait) {
-                    width: 90vw;
+                    width: 100vw;
                     height: 60vw;
                 }
 
@@ -103,7 +103,7 @@
                     }
 
                     @media screen and (max-width:600px) and (orientation:portrait) {
-                        top: 53%;
+                        top: 62%;
                         height: 40%;
                     }
                 }

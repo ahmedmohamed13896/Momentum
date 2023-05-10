@@ -376,7 +376,7 @@ section.home canvas.touch-disbled {
 }
 @media screen and (max-width: 600px) and (orientation: portrait) {
   .section.our_services .service-container .service-links {
-    width: 90vw;
+    width: 100vw;
     height: 60vw;
   }
 }
@@ -411,7 +411,7 @@ section.home canvas.touch-disbled {
 }
 @media screen and (max-width: 600px) and (orientation: portrait) {
   .section.our_services .service-container .service-links .links {
-    top: 53%;
+    top: 62%;
     height: 40%;
   }
 }
