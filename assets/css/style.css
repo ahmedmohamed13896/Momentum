@@ -196,8 +196,6 @@ section.home {
 }
 @media screen and (max-width: 768px) and (orientation: portrait) {
   section.home {
-    background-size: 142%;
-    background-position: bottom;
     background-image: url(../images/red-mobile.png);
   }
   section.home .nav-bottom {
@@ -759,6 +757,9 @@ section.home canvas.touch-disbled {
   font-family: "EJ Rounded";
   font-weight: 300;
   font-size: 14px;
+}
+.section .contact-container .circle .content p a {
+  color: #FFF;
 }
 @media screen and (max-width: 992px) {
   .section .contact-container .circle .content .conatct-icon {

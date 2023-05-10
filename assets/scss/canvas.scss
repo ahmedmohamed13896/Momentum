@@ -16,8 +16,6 @@ section.home{
     align-items: flex-start;
     z-index: 100;
     @media screen and (max-width:768px) and (orientation:portrait) {
-        background-size: 142%;
-        background-position: bottom;
         background-image: url(../images/red-mobile.png);
         // &::before{
         //     content: '';
