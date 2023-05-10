@@ -203,7 +203,7 @@ function setActiveLink(e, id, number) {
 
 initAOS();
 
-$(document).ready(function () {
+$(window).on('load', function() {
   /*** Show Hide Loader*/
   $("#page_loader").hide();
 
@@ -218,6 +218,11 @@ $(document).ready(function () {
   // Do something on slide #2 (note that index starts from 0)
   let swipIsActive = true;
 
+
+  document.querySelector(".stopped_video").currentTime = 0;
+  //mobile
+  document.querySelector(".stopped_video.mobile-video").currentTime = 0;
+
   swiper.on("slideChange", (sw) => {
     console.log(swiper.realIndex);
     sw.mousewheel.disable();
@@ -227,8 +232,10 @@ $(document).ready(function () {
     if (!sw.mousewheel.enabled) {
       if (swiper.realIndex == 0) {
         document.querySelector(".stopped_video").currentTime = 0;
+
         //mobile
         document.querySelector(".stopped_video.mobile-video").currentTime = 0;
+
         timeOut = setTimeout(() => {
           sw.mousewheel.enable();
         }, 500);
@@ -328,11 +335,22 @@ $(document).ready(function () {
 
   document.addEventListener('touchstart', e => {
     serviceTop = ourServices.getBoundingClientRect().top;
-    touchstartX = e.changedTouches[0].screenX
+    touchstartY = e.changedTouches[0].screenY
+  })
+  document.addEventListener('touchmove', e => {
+    serviceTop = ourServices.getBoundingClientRect().top;
+    if (touchendY < touchstartY) {
+      // console.log('down');
+      handleScrollDown();
+    }
+    if (touchendY > touchstartY) {
+      // console.log('up');
+      handleScrollUp();
+    }
   })
 
   document.addEventListener('touchend', e => {
-    touchendX = e.changedTouches[0].screenX
+    touchendY = e.changedTouches[0].screenY
     checkDirection()
   })
 
