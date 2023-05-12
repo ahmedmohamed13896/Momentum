@@ -194,13 +194,13 @@ section.home {
   align-items: flex-start;
   z-index: 100;
 }
-@media screen and (max-width: 768px) and (orientation: portrait) {
+@media (max-width: 768px) and (orientation: portrait) {
   section.home {
     background-image: url(../images/mobile-BG-01.jpg);
   }
   section.home .nav-bottom {
     max-width: 100%;
-    bottom: 40px;
+    bottom: 0;
   }
   section.home .nav-bottom ul {
     flex-wrap: wrap;
@@ -215,7 +215,15 @@ section.home {
     font-size: 13px;
   }
 }
-@media screen and (max-width: 1024px) {
+@media (max-width: 325px) and (orientation: portrait) {
+  section.home .nav-bottom ul li {
+    padding: 5px 10px;
+  }
+  section.home .nav-bottom ul li a {
+    font-size: 11px;
+  }
+}
+@media (max-width: 1024px) {
   section.home {
     align-items: center;
   }
@@ -254,7 +262,7 @@ section.home canvas {
   max-width: 100%;
   margin: 0 auto;
 }
-@media screen and (max-width: 600px) and (orientation: portrait) {
+@media (max-width: 600px) and (orientation: portrait) {
   section.home canvas {
     max-width: 150vw;
   }
@@ -289,7 +297,7 @@ section.home canvas.touch-disbled {
 .swiper-slide video.mobile-video {
   display: none;
 }
-@media screen and (max-width: 768px) and (orientation: portrait) {
+@media (max-width: 768px) and (orientation: portrait) {
   .swiper-slide video.desktop-video {
     display: none;
   }

@@ -15,7 +15,7 @@ section.home{
     justify-content: center;
     align-items: flex-start;
     z-index: 100;
-    @media screen and (max-width:768px) and (orientation:portrait) {
+    @media (max-width:768px) and (orientation:portrait) {
         background-image: url(../images/mobile-BG-01.jpg);
         // &::before{
         //     content: '';
@@ -29,7 +29,7 @@ section.home{
 
         .nav-bottom{
             max-width: 100%;
-            bottom: 40px;
+            bottom: 0;
             ul{
                 flex-wrap: wrap;
                 li{
@@ -45,7 +45,20 @@ section.home{
         }
     }
 
-    @media screen and (max-width:1024px)  {
+    @media (max-width:325px) and (orientation:portrait){
+        .nav-bottom{
+            ul{
+                li{
+                    padding: 5px 10px;
+                    a{
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width:1024px)  {
         align-items: center;
     }
 
@@ -86,7 +99,7 @@ section.home{
         max-width: 100%;
         // max-height: 100vh;
         margin: 0 auto;
-        @media screen and (max-width:600px) and (orientation:portrait) {
+        @media (max-width:600px) and (orientation:portrait) {
             max-width: 150vw;
         }
 
@@ -127,7 +140,7 @@ section.home{
         display: none;
     }
 
-    @media screen and (max-width:768px) and (orientation:portrait) {
+    @media (max-width:768px) and (orientation:portrait) {
         
         &.desktop-video{
             display: none;
