@@ -219,9 +219,9 @@ $(window).on('load', function() {
   let swipIsActive = true;
 
 
-  document.querySelector(".stopped_video").currentTime = 0;
+  document.querySelector(".stopped_video").currentTime = 0.1;
   //mobile
-  document.querySelector(".stopped_video.mobile-video").currentTime = 0;
+  document.querySelector(".stopped_video.mobile-video").currentTime = 0.1;
 
   swiper.on("slideChange", (sw) => {
     console.log(swiper.realIndex);
@@ -231,10 +231,10 @@ $(window).on('load', function() {
     document.documentElement.style.overflow = "hidden";
     if (!sw.mousewheel.enabled) {
       if (swiper.realIndex == 0) {
-        document.querySelector(".stopped_video").currentTime = 0;
+        document.querySelector(".stopped_video").currentTime = 0.1;
 
         //mobile
-        document.querySelector(".stopped_video.mobile-video").currentTime = 0;
+        document.querySelector(".stopped_video.mobile-video").currentTime = 0.1;
 
         timeOut = setTimeout(() => {
           sw.mousewheel.enable();

@@ -64,6 +64,7 @@ html {
 body {
   position: relative;
   width: 100%;
+  height: 100%;
   margin: 0;
   font-family: "EJ Rounded Book";
   font-weight: normal;
@@ -121,7 +122,6 @@ body .home-icon {
   padding: 5px 25px;
   border-right: 1px solid #ECC935;
   border-left: 1px solid #ECC935;
-  background-color: rgba(158, 20, 33, 0.6784313725);
 }
 .nav-bottom ul li a {
   color: #ECC935;
@@ -181,11 +181,11 @@ section.home {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-color: #9e1421;
-  background-image: url(../images/red-bg1.jpg);
+  background-image: url(../images/bg-01.jpg);
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -196,7 +196,7 @@ section.home {
 }
 @media screen and (max-width: 768px) and (orientation: portrait) {
   section.home {
-    background-image: url(../images/red-mobile.png);
+    background-image: url(../images/mobile-BG-01.jpg);
   }
   section.home .nav-bottom {
     max-width: 100%;
