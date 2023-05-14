@@ -126,6 +126,7 @@ body .home-icon {
 .nav-bottom ul li a {
   color: #ECC935;
   text-decoration: none;
+  text-shadow: -1px 0 1px #b0242f;
 }
 
 .pendulums {
@@ -187,6 +188,9 @@ section.home {
   background-color: #9e1421;
   background-image: url(../images/bg-01.jpg);
   background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
   background-position: center;
   overflow: hidden;
   display: flex;
@@ -194,10 +198,10 @@ section.home {
   align-items: flex-start;
   z-index: 100;
 }
+section.home .first-img {
+  display: none;
+}
 @media (max-width: 768px) and (orientation: portrait) {
-  section.home {
-    background-image: url(../images/mobile-BG-01.jpg);
-  }
   section.home .nav-bottom {
     max-width: 100%;
     bottom: 0;
@@ -213,6 +217,10 @@ section.home {
   }
   section.home .nav-bottom ul li a {
     font-size: 13px;
+  }
+  section.home .first-img {
+    display: block;
+    max-width: 68%;
   }
 }
 @media (max-width: 325px) and (orientation: portrait) {
@@ -716,7 +724,6 @@ section.home canvas.touch-disbled {
   height: fit-content;
   margin: auto;
   width: 90%;
-  transform: translateY(-10%);
 }
 @media screen and (min-width: 992px) {
   .section .contact-container .circle {

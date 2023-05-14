@@ -218,11 +218,10 @@ $(window).on('load', function() {
   // Do something on slide #2 (note that index starts from 0)
   let swipIsActive = true;
 
-
   document.querySelector(".stopped_video").currentTime = 0;
   //mobile
-  document.querySelector(".stopped_video.mobile-video").currentTime = 0;
-  document.querySelector(".stopped_video.mobile-video").play();
+  // document.querySelector(".stopped_video.mobile-video").currentTime = 0;
+  // document.querySelector(".stopped_video.mobile-video").play();
 
   swiper.on("slideChange", (sw) => {
     console.log(swiper.realIndex);
@@ -235,8 +234,8 @@ $(window).on('load', function() {
         document.querySelector(".stopped_video").currentTime = 0;
         
         //mobile
-        document.querySelector(".stopped_video.mobile-video").play();
-        document.querySelector(".stopped_video.mobile-video").currentTime = 0;
+        // document.querySelector(".stopped_video.mobile-video").currentTime = 0;
+        // document.querySelector(".stopped_video.mobile-video").play();
 
         timeOut = setTimeout(() => {
           sw.mousewheel.enable();
@@ -248,7 +247,7 @@ $(window).on('load', function() {
         document.querySelector(".video_1").play();
         document.querySelector(".video_1").playbackRate = .7;
         //mobile
-        document.querySelector(".stopped_video.mobile-video").currentTime = 0;
+        // document.querySelector(".stopped_video.mobile-video").currentTime = 0;
         document.querySelector(".video_1.mobile-video").currentTime = 0;
         document.querySelector(".video_1.mobile-video").play();
         document.querySelector(".video_1.mobile-video").playbackRate = .7;
@@ -406,16 +405,17 @@ $(window).on('load', function() {
   function handleScrollUp(){
     if(serviceTop == 0){
       $(home).show();
-      if(swipIsActive){
-        // document.querySelector(`.video_${slidesLength}`).currentTime = 0;
-        // document.querySelector(`.video_${slidesLength}`).play();
-        // // mobile
-        // document.querySelector(`.video_${slidesLength}.mobile-video`).currentTime = 0;
-        // document.querySelector(`.video_${slidesLength}.mobile-video`).play();
-        // timeOut = setTimeout(() => {
-        //   // swiper.mousewheel.enable();
-        //   swipIsActive = true;
-        // }, 5500);
+      if (swiper.realIndex == 4 && swipIsActive) {
+        swipIsActive = false;
+        document.querySelector(".video_4").currentTime = 0;
+        document.querySelector(".video_4").play();
+        // mobile
+        document.querySelector(".video_4.mobile-video").currentTime = 0;
+        document.querySelector(".video_4.mobile-video").play();
+        timeOut = setTimeout(() => {
+          swipIsActive = true;
+          clearTimeout(timeOut);
+        }, 5500);
       }
       document.documentElement.style.overflow = "hidden";
     }else{
