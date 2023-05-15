@@ -8,7 +8,6 @@ let swiper = new Swiper(".homeSwiper", {
   direction: "vertical",
   speed: 1000,
   slidesPerView: 1,
-  lazy: true,
   effect: "fade",
   spaceBetween: 0,
   mousewheel: true,
@@ -203,7 +202,12 @@ function setActiveLink(e, id, number) {
 
 initAOS();
 
+
 $(window).on('load', function() {
+  document.querySelectorAll('.mobile-video').forEach(v=>{
+    v.addEventListener('ended', ()=>{}, false);
+  });
+  
   /*** Show Hide Loader*/
   $("#page_loader").hide();
 
