@@ -93,6 +93,15 @@ body .home-icon {
   z-index: 99999;
 }
 
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+}
+
+.swiper-pagination-vertical.swiper-pagination-bullets, .swiper-vertical > .swiper-pagination-bullets {
+  transform: translate3d(-5px, -50%, 0);
+}
+
 @keyframes swingCenterRight {
   from {
     transform: rotateZ(0);

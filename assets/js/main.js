@@ -228,7 +228,6 @@ $(window).on('load', function() {
   // document.querySelector(".stopped_video.mobile-video").play();
 
   swiper.on("slideChange", (sw) => {
-    console.log(swiper.realIndex);
     sw.mousewheel.disable();
     clearTimeout(timeOut);
     swipIsActive = false;
@@ -329,11 +328,11 @@ $(window).on('load', function() {
       
   function checkDirection() {
     if (touchendY < touchstartY) {
-      console.log('down');
+      // console.log('down');
       handleScrollDown();
     }
     if (touchendY > touchstartY) {
-      console.log('up');
+      // console.log('up');
       handleScrollUp();
     }
   }
